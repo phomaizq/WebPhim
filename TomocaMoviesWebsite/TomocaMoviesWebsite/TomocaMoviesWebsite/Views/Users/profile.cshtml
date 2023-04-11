@@ -1,0 +1,52 @@
+﻿@using TomocaMoviesWebsite.Models
+
+@{
+    ViewBag.Title = "profile";
+    Layout = "~/Views/Shared/Tomoca_Layout.cshtml";
+    TomocaMoviesDataContext db = new TomocaMoviesDataContext();
+    var us = db.Users.SingleOrDefault(n => n.Username == Session["Username"].ToString());
+}
+<style>
+    .signup {
+        background: #f5d2d2;
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        border-radius: 5px;
+        padding: 15px;
+    }
+
+    .signup:hover {
+        -webkit-box-shadow: rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+        -moz-box-shadow: rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+        -o-box-shadow: rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+        box-shadow: rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+    }
+</style>
+
+<div class="signup animate__animated animate__jackInTheBox">
+    <h3>Signing Up</h3>
+    <div class="grid-signup">
+        <div class="signup-item-bg signup-item1 ">
+            <p>User Name: @us.Username</p>
+        </div>
+        <div class="signup-item-bg signup-item2">
+            <div class="fistname">
+                <p>First Name: @us.FirstName</p>
+                @*<input type="text" name="firstname" value="" placeholder="Aa">*@
+            </div>
+            <div class="lastname">
+                <p>Last Name: @us.LastName</p>
+            </div>
+        </div>
+        <div class="signup-item-bg signup-item5">
+            <p>Email address: @us.Email</p>
+
+        </div>
+        <div class="signup-item-bg signup-item6">
+            <p>Phone Number: @us.Phone</p>
+        </div>
+    </div>
+    <a href="~/Tomoca/Index" style="margin-top: 54px;">Go Home</a><br>
+</div>
